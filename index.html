@@ -13,8 +13,107 @@
   gtag('config', 'G-9VNHRPXZE1');
 </script>
 
+	<!-- jQuery (required for preloader) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		// Fallback to remove preloader if it's stuck
+		setTimeout(function() {
+			$('.preloader-holder').fadeOut('slow');
+			$('body').css('overflow', 'visible');
+		}, 5000); // 5 second fallback
+
+		// Initialize functionality after DOM is ready
+		$(document).ready(function() {
+			console.log('DOM Ready');
+			
+			// Initialize scrollspy
+			$('body').scrollspy({
+				target: '.wrap-core-nav-list',
+				offset: 70
+			});
+
+			// Refresh scrollspy when the page is fully loaded
+			$(window).on('load', function() {
+				$('body').scrollspy('refresh');
+			});
+
+			// Handle scroll events for navigation highlighting
+			$(window).on('scroll', function() {
+				var scrollPos = $(document).scrollTop();
+				
+				// Find which section we're in
+				$('section').each(function() {
+					var top = $(this).offset().top - 100,
+						bottom = top + $(this).outerHeight();
+
+					if (scrollPos >= top && scrollPos <= bottom) {
+						$('nav .menu li').removeClass('active');
+						$('nav .menu li a[href="#' + $(this).attr('id') + '"]').parent().addClass('active');
+					}
+				});
+			});
+			
+			// Smooth scroll for navigation links
+			$('nav .menu li a').on('click', function(e) {
+				e.preventDefault();
+				var target = $(this).attr('href');
+				$('html, body').animate({
+					scrollTop: $(target).offset().top - 69
+				}, 1000);
+			});
+			
+			// Load required scripts in sequence
+			$.getScript('assets/js/corenav-master/corenav-master/dist/coreNavigation-1.1.3.min.js')
+				.done(function() {
+					console.log('CoreNav loaded');
+					// Initialize CoreNav after it's loaded
+					$('nav').coreNavigation({
+						menuPosition: "right",
+						container: true,
+						mode: 'fixed',
+						responsideSlide: true,
+						animated: true,
+						animatedIn: 'fadeInDown',
+						animatedOut: 'fadeOutUp',
+						onInit: function() {
+							$(window).on('scroll', function () {
+								if ($(window).scrollTop() > 0) {
+									$('nav').addClass('scrolled');
+								} else {
+									$('nav').removeClass('scrolled');
+								}
+							});
+						}
+					});
+				})
+				.fail(function(jqxhr, settings, exception) {
+					console.log('CoreNav load failed:', exception);
+				});
+		});
+
+		// Handle preloader on window load
+		$(window).on('load', function () {
+			console.log('Window loaded');
+			$('.preloader-holder').fadeOut('slow');
+			$('body').css('overflow', 'visible');
+		});
+	</script>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Dr. Sownak Bose - Associate Professor & UKRI Future Leaders Fellow at Durham University's Institute for Computational Cosmology. Research in computational cosmology and galaxy formation.">
+	<meta name="author" content="Sownak Bose">
+	
+	<!-- Open Graph / Social Media Meta Tags -->
+	<meta property="og:title" content="Dr. Sownak Bose - Computational Cosmologist">
+	<meta property="og:description" content="Research in computational cosmology, galaxy formation, and dark matter at Durham University's Institute for Computational Cosmology.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://sownakbose.github.io">
+	
+	<!-- Security Headers -->
+	<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+	<meta http-equiv="X-Content-Type-Options" content="nosniff">
+	<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
 
 	<!-- // CSS FILES // -->
 
@@ -46,7 +145,7 @@
 </head>
 
 
-<body bgcolor="#000">
+<body data-spy="scroll" data-target=".wrap-core-nav-list" data-offset="70" bgcolor="#000">
 
 	<!-- ==============================================
     Preloader
@@ -54,7 +153,6 @@
 
 	<div class="preloader-holder">
 		<div id="loader">
-			<div id="shadow"></div>
 			<div id="box"></div>
 		</div>
 	</div>
@@ -63,28 +161,25 @@
     NAVBAR
     =============================================== -->
 
-	<nav hidden>
-	<div class="nav-header">
-			<!-- Navbar Logo -->
-			<!-- <a href="#" class="brand">
-				<img class="scrolled" src="images/DU.png" alt="logo">
-				<img class="top" src="images/DU.png" alt="logo-scrolled">
-			</a> -->
-			<!-- Burger Menu -->
-			<!-- <button class="toggle-bar">
-				<span class="fa fa-bars"></span>
-			</button> -->
+	<nav>
+		<div class="nav-container">
+			<div class="nav-header">
+				<button class="toggle-bar">
+					<span class="fa fa-bars"></span>
+				</button>
+			</div>
+			<div class="wrap-core-nav-list">
+				<ul class="menu">
+					<li class="scrollspy active"><a href="#home">Home</a></li>
+					<li class="scrollspy"><a href="#about">About Me</a></li>
+					<li class="scrollspy"><a href="#services">CV</a></li>
+					<li class="scrollspy"><a href="#portfolio">Research</a></li>		
+					<li class="scrollspy"><a href="#team">Group</a></li>
+					<li class="scrollspy"><a href="#testimonials">Outreach & Education</a></li>
+					<li class="scrollspy"><a href="#contact">Contact</a></li>
+				</ul>
+			</div>
 		</div>
-		<!-- Navbar Links -->
-		<ul class="menu">
-			<li class="scrollspy active"><a href="#home">Home</a></li>
-			<li class="scrollspy"><a href="#about">About Me</a></li>
-			<li class="scrollspy"><a href="#services">CV</a></li>
-			<li class="scrollspy"><a href="#portfolio">Research</a></li>
-			<li class="scrollspy"><a href="#team">Group</a></li>
-			<li class="scrollspy"><a href="#testimonials">Outreach & Education</a></li>
-			<li class="scrollspy"><a href="#contact">Contact</a></li>
-		</ul>
 	</nav>
 
 	<!-- ==============================================
@@ -139,53 +234,35 @@
 	<section id="about">
 		<div class="container">
 			<h2>About Me</h2>
-			<!-- <div class="row"> -->
-				<!-- <div class="col-lg-6 wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".4s">
-					<div class="about-img">
-						<img src="images/full.jpg" class="img-fluid" alt="about">
-					</div>
-				</div> -->
-			<!-- <div class="col-lg-6 about-content wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".6s"> -->
-			<div class="about-img">
-			<img src="images/full.jpg" class="img-fluid" alt="about">
+			<div class="about-content">
+				<div class="about-img">
+					<img src="images/full.jpg" class="img-fluid" alt="about">
+				</div>
+				<div class="about-text">
+					<p></p>
+					<p>
+						I am an astronomer at the <a href="https://icc.dur.ac.uk/" target="_blank">Institute for Computational Cosmology</a>, 
+						part of the <a href="https://www.durham.ac.uk/departments/academic/physics/" target="_blank">Department of Physics</a> 
+						at <a href="https://www.durham.ac.uk/" target="_blank">Durham University</a>. Before this, I was an ITC Fellow at the 
+						<a href="https://cfa.harvard.edu/" target="_blank">Center for Astrophysics | Harvard & Smithsonian</a> (2017-2021). 
+						I received my PhD at Durham (2013-2017), and my undergraduate/Masters degree in Physics at 
+						<a href="http://www.stcatz.ox.ac.uk" target="_blank">St.Catherine's College</a>, 
+						<a href="http://www.ox.ac.uk" target="_blank">University of Oxford</a> (2009-2013).
+					</p>
+					<p>
+						My research makes use of some of the largest supercomputers in the world to study the formation of galaxies in our Universe. 
+						I am especially interested in trying to figure new ways to test models of dark matter and gravity, and making predictions 
+						that could potentially be measured in the real distribution of galaxies in the cosmos. You can read more about my research 
+						interests <a href="#portfolio">here</a>.
+					</p>
+					<p>
+						Besides research, I am very passionate about education and outreach, and enjoy thinking about new ways of communicating science. 
+						Perhaps most importantly, my primary passion is football, and my outlook on life is usually dictated by how Manchester United 
+						have been performing at that point in the season.
+					</p>
+				</div>
 			</div>
-			<br>
-					<p> I am an astronomer at the <a href="https://icc.dur.ac.uk/" target="_blank">Institute for Computational Cosmology</a>, part of the <a href="https://www.durham.ac.uk/departments/academic/physics/" target="_blank">Department of Physics</a> at <a href="https://www.durham.ac.uk/" target="_blank">Durham University</a>. Before this, I was an ITC Fellow at the <a href="https://cfa.harvard.edu/" target="_blank">Center for Astrophysics | Harvard & Smithsonian</a> (2017-2021). I received my PhD at Durham (2013-2017), and my undergraduate/Masters degree in Physics at <a href="http://www.stcatz.ox.ac.uk" target="_blank">St.Catherine's College</a>,	<a href="http://www.ox.ac.uk" target="_blank">University of Oxford</a> (2009-2013).
-						<br>
-						My research makes use of some of the largest supercomputers in the world to study the formation of galaxies in our Universe. I am especially interested in trying to figure new ways to test models of dark matter and gravity, and making predictions that could potentially be measured in the real distribution of galaxies in the cosmos. You can read more about my research interests <a href="#portfolio"> here </a>.
-						<br>
-						Besides research, I am very passionate about education and outreach, and enjoy thinking about new ways of communicating science. Perhaps most importantly, my primary passion is football, and my outlook on life is usually dictated by how Manchester United have been performing at that point in the season.
-​										 </p>
-
-					<!-- <div class="skills">
-						<span class="skill">Design</span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-primary" role="progressbar" style="width: 60%;">
-								<span>60%</span>
-							</div>
-						</div>
-						<span class="skill">Development</span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-primary" role="progressbar" style="width: 90%;">
-								<span>90%</span>
-							</div>
-						</div>
-						<span class="skill">Branding</span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-primary" role="progressbar" style="width: 50%;">
-								<span>50%</span>
-							</div>
-						</div>
-						<span class="skill">Photography</span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-primary" role="progressbar" style="width: 80%;">
-								<span>80%</span>
-							</div>
-						</div>
-					</div>
-				</div>-->
-			<!-- </div> -->
-		<!-- </div> -->
+		</div>
 	</section>
 
 
@@ -259,7 +336,7 @@
 				<div class="row">
 					<div class="col-md-6 col-lg-4 portfolio-item">
 						<div class="item-img">
-							<img src="images/L5_halo1_10r200-cropped.png" alt="1">
+							<img src="images/L5_halo1_10r200-cropped.png" alt="Visualization of dark matter halo structure from cosmological simulation" loading="lazy">
 						</div>
 						<div class="item-info">
 							<h3 class="heading-3">The nature of dark matter</h3>
@@ -269,7 +346,7 @@
 					</div>
 					<div class="col-md-6 col-lg-4 portfolio-item">
 						<div class="item-img">
-							<img src="images/GSFC_20171208_Archive_e000389_orig.jpeg" alt="2">
+							<img src="images/GSFC_20171208_Archive_e000389_orig.jpeg" alt="NASA visualization of cosmic structure" loading="lazy">
 						</div>
 						<div class="item-info">
 							<h3 class="heading-3">Near-field cosmology</h3>
@@ -279,7 +356,7 @@
 					</div>
 					<div class="col-md-6 col-lg-4 portfolio-item">
 						<div class="item-img">
-							<img src="images/galaxyhalo.png" alt="3">
+							<img src="images/galaxyhalo.png" alt="Galaxy-halo connection visualization" loading="lazy">
 						</div>
 						<div class="item-info">
 							<h3 class="heading-3">The galaxy-halo connection</h3>
@@ -289,7 +366,7 @@
 					</div>
 					<div class="col-md-6 col-lg-4 portfolio-item">
 						<div class="item-img">
-							<img src="images/Reion.png" alt="4">
+							<img src="images/Reion.png" alt="Cosmic reionization simulation visualization" loading="lazy">
 						</div>
 						<div class="item-info">
 							<h3 class="heading-3">Cosmic reionisation</h3>
@@ -299,7 +376,7 @@
 					</div>
 					<div class="col-md-6 col-lg-4 portfolio-item">
 						<div class="item-img">
-							<img src="images/LSS.png" alt="5">
+							<img src="images/LSS.png" alt="Large-scale structure of the universe visualization" loading="lazy">
 						</div>
 						<div class="item-info">
 							<h3 class="heading-3">Large-scale structure</h3>
@@ -309,7 +386,7 @@
 					</div>
 					<div class="col-md-6 col-lg-4 portfolio-item">
 						<div class="item-img">
-							<img src="images/isw_map.png" alt="6">
+							<img src="images/isw_map.png" alt="Integrated Sachs-Wolfe effect map visualization" loading="lazy">
 						</div>
 						<div class="item-info">
 							<h3 class="heading-3">The nature of gravity</h3>
@@ -377,11 +454,50 @@
 				<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".2s">
 					<div class="team-member">
 						<div class="team-img">
-							<img src="images/members/sorini.jpg" class="img-fluid" alt="team-1">
+							<img src="https://www.durham.ac.uk/media/durham-university/site-assets/image/Blank-profile-INK.png" class="img-fluid" alt="Dr. Alejandra Aguirre-Santaella - Postdoctoral Researcher" loading="lazy">
 						</div>
 						<div class="team-caption">
-							<h4>Daniele Sorini</h4>
-							<p><a href="https://www.durham.ac.uk/staff/daniele-sorini/" target="_blank">Daniele Sorini </a> <br> Postdoc</p>
+							<h4>Dr. Alejandra Aguirre-Santaella</h4>
+							<p><a href="https://www.durham.ac.uk/staff/alejandra-aguirre-santaella/" target="_blank">Dr. Alejandra Aguirre-Santaella </a> <br> Postdoc</p>
+							<p> Research interests: Dark matter, cosmological simulations, galaxy formation</p>
+							<!-- <ul class="social-media">
+								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+							</ul> -->
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".2s">
+					<div class="team-member">
+						<div class="team-img">
+							<img src="https://www.durham.ac.uk/media/durham-university/site-assets/image/Blank-profile-INK.png" class="img-fluid" alt="Dr. Shengdong Lu - Postdoctoral Researcher" loading="lazy">
+						</div>
+						<div class="team-caption">
+							<h4>Dr. Shengdong Lu</h4>
+							<p><a href="https://www.durham.ac.uk/staff/shengdong-lu/" target="_blank">Dr. Shengdong Lu </a> <br> Postdoc</p>
+							<p> Research interests: Cosmology, galaxy formation, high-redshift galaxies</p>
+							<!-- <ul class="social-media">
+								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+							</ul> -->
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				
+				<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".2s">
+					<div class="team-member">
+						<div class="team-img">
+							<img src="images/members/sorini.jpg" class="img-fluid" alt="Dr. Daniele Sorini - Postdoctoral Researcher" loading="lazy">
+						</div>
+						<div class="team-caption">
+							<h4>Dr. Daniele Sorini</h4>
+							<p><a href="https://www.durham.ac.uk/staff/daniele-sorini/" target="_blank">Dr. Daniele Sorini </a> <br> Postdoc</p>
 							<p> Research interests: Cosmology, galaxy formation, large-scale structure, circumgalactic medium</p>
 							<!-- <ul class="social-media">
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -398,8 +514,8 @@
 						</div>
 						<div class="team-caption">
 							<h4>Mac McMullan</h4>
-							<p><a href="https://www.durham.ac.uk/staff/mac-m-mcmullan/" target="_blank"> Mac McMullan </a> <br>First Year PhD Student</p>
-							<p> Research interests: Dwarf galaxies, dark matter, semi-analytic galaxy formation</p>
+							<p><a href="https://www.durham.ac.uk/staff/mac-m-mcmullan/" target="_blank"> Mac McMullan </a> <br>Third Year PhD Student</p>
+							<p> Research interests: Dwarf galaxies, dark matter, semi-analytic galaxy formation, black holes</p>
 							<!-- <ul class="social-media">
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -415,7 +531,7 @@
 						</div>
 						<div class="team-caption">
 							<h4>Yuchan Wang</h4>
-							<p><a href="https://www.durham.ac.uk/staff/yuchan-wang/" target="_blank"> Yuchan Wang </a> <br>Second Year PhD Student</p>
+							<p><a href="https://www.durham.ac.uk/staff/yuchan-wang/" target="_blank"> Yuchan Wang </a> <br>Fourth Year PhD Student</p>
 							<p> Research interests: Dark matter, small-scale structure, cosmological zoom simulations, cosmic web</p>
 							<!-- <ul class="social-media">
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -433,7 +549,7 @@
 						</div>
 						<div class="team-caption">
 							<h4>Joaquin Sureda</h4>
-							<p><a href="https://www.durham.ac.uk/staff/joaquin-m-sureda/" target="_blank"> Joaquin Sureda </a> <br>First Year PhD Student</p>
+							<p><a href="https://www.durham.ac.uk/staff/joaquin-m-sureda/" target="_blank"> Joaquin Sureda </a> <br>Third Year PhD Student</p>
 							<p> Research interests: Dwarf galaxies, cosmological hydrodynamical simulations, dark matter</p>
 							<!-- <ul class="social-media">
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -451,8 +567,8 @@
 						</div>
 						<div class="team-caption">
 							<h4>Sarah Johnston</h4>
-							<p><a href="https://www.durham.ac.uk/staff/sarah-c-johnston/" target="_blank"> Sarah Johnston </a> <br> First Year PhD Student</p>
-							<p> Research interests: Cosmological simulations with GPUs, dark matter, large-scale structure, galaxy formation</p>
+							<p><a href="https://www.durham.ac.uk/staff/sarah-c-johnston/" target="_blank"> Sarah Johnston </a> <br> Third Year PhD Student</p>
+							<p> Research interests: Cosmological simulations with GPUs, high-performance computing, dark matter</p>
 							<!-- <ul class="social-media">
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -469,7 +585,7 @@
 						</div>
 						<div class="team-caption">
 							<h4>Michael Collier</h4>
-							<p><a href="https://www.durham.ac.uk/staff/michael-collier/" target="_blank"> Michael Collier </a> <br> First Year PhD Student</p>
+							<p><a href="https://www.durham.ac.uk/staff/michael-collier/" target="_blank"> Michael Collier </a> <br> Third Year PhD Student</p>
 							<p> Research interests: Modified gravity, tests of gravity, hydrodynamical simulations, galaxy-halo connection</p>
 							<!-- <ul class="social-media">
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -491,7 +607,7 @@
 								</div>
 								<div class="team-caption">
 									<h4>Haonan Zheng</h4>
-									<p><a href="https://www.durham.ac.uk/staff/haonan-zheng/" target="_blank"> Haonan Zheng </a> <br> Visiting PhD Student from the National Astronomical Observatories (Beijing, China) </p>
+									<p><a href="https://www.durham.ac.uk/staff/haonan-zheng/" target="_blank"> Haonan Zheng </a> <br> Visiting PhD Student; now KIAA Fellow at Peking University</p>
 									<p> Research interests: Dark matter, cosmological zoom simulations, numerical methods</p>
 									<!-- <ul class="social-media">
 										<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -509,7 +625,7 @@
 								</div>
 								<div class="team-caption">
 									<h4>Bipradeep Saha</h4>
-									<p> <a href="https://sparxastronomy.github.io/pages/about.html" target="_blank"> Bipradeep Saha </a> <br> Undegraduate at the Indian Institute of Science Education and Research (Kolkata, India)</p>
+									<p> <a href="https://sparxastronomy.github.io/pages/about.html" target="_blank"> Bipradeep Saha </a> <br> Undegraduate at the IISER (Kolkata, India); now PhD student at MPIA, Heidelberg</p>
 									<p> Research interests: Galaxy formation, effects of baryons on large-scale structure</p>
 									<!-- <ul class="social-media">
 										<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -529,7 +645,7 @@
 							</div>
 							<div class="team-caption">
 								<h4>Yash Gondhalekar</h4>
-								<p><a href="https://in.linkedin.com/in/yash-gondhalekar-0924361b2?original_referer=https%3A%2F%2Fwww.google.co.uk%2F" target="_blank"> Yash Gondhalekar </a> <br> Undegraduate at BITS Pilani (Goa, India)</p>
+								<p><a href="https://in.linkedin.com/in/yash-gondhalekar-0924361b2?original_referer=https%3A%2F%2Fwww.google.co.uk%2F" target="_blank"> Yash Gondhalekar </a> <br> Undegraduate at BITS Pilani (Goa, India); now PhD student at UCL</p>
 								<p> Research interests: Machine learning, artificial intelligence, cosmological simulations, modified gravity</p>
 								<!-- <ul class="social-media">
 									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -637,22 +753,22 @@
 
 	<!-- // JS FILES // -->
 
-	<!-- jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="assets/js/jquery.easing.min.js"></script>
+	<script defer src="assets/js/jquery.easing.min.js"></script>
 	<!-- Bootstrap -->
-	<script src="assets/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+	<script defer src="assets/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
 	<!-- Core Navigation -->
-	<script src="assets/js/corenav-master/corenav-master/dist/coreNavigation-1.1.3.min.js"></script>
+	<script defer src="assets/js/corenav-master/corenav-master/dist/coreNavigation-1.1.3.min.js"></script>
 	<!-- Owl Carousel -->
-	<script src="assets/js/owl.carousel.min.js"></script>
+	<script defer src="assets/js/owl.carousel.min.js"></script>
 	<!-- Wow -->
-	<script src="assets/js/wow-1.3.0.min.js"></script>
+	<script defer src="assets/js/wow-1.3.0.min.js"></script>
 	<!-- LightBox -->
-	<script src="assets/js/lightbox/dist/js/lightbox.min.js"></script>
+	<script defer src="assets/js/lightbox/dist/js/lightbox.min.js"></script>
 	<!-- Custom -->
-	<script src="assets/js/custom.js"></script>
+	<script defer src="assets/js/custom.js"></script>
+	<!-- Bootstrap Dependencies -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 </body>
 
 </html>

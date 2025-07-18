@@ -1,12 +1,37 @@
 nav {
-    border-bottom: solid 1px transparent;
-    min-height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     background: transparent;
+    transition: all 0.3s ease;
+}
+
+nav.scrolled {
+    background: #1a1a1a;
+}
+
+nav .nav-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
 }
 
 nav .wrap-core-nav-list,
 nav .nav-header {
     background: transparent;
+}
+
+nav .wrap-core-nav-list {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav .nav-header {
+    display: none;
 }
 
 nav .brand {
@@ -32,11 +57,26 @@ nav.scrolled .brand img.scrolled{
     display: block;
 }
 
+nav .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav .menu li {
+    display: inline-block;
+}
+
 nav .menu li a {
     display: block;
     padding: 20px 25px;
     text-decoration: none;
     color: #fff;
+    position: relative;
+    transition: all 0.3s ease;
 }
 
 nav .menu li.active > a,
@@ -47,6 +87,29 @@ nav .menu li a:hover {
 nav.scrolled  .menu li.active > a,
 nav.scrolled  .menu li a:hover {
 	color: #e74c3c;
+}
+
+nav .menu li.active a {
+    color: #ff9323;
+}
+
+nav .menu li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #ff9323;
+    bottom: 15px;
+    left: 25px;
+    transition: width 0.3s ease;
+}
+
+nav .menu li.active a::after {
+    width: calc(100% - 50px);
+}
+
+nav .menu li:hover a::after {
+    width: calc(100% - 50px);
 }
 
 nav button {
@@ -73,6 +136,52 @@ nav.scrolled .nav-header{
     background: #1a1a1a;
 }
 
+/* Navigation menu specific styles */
+nav .wrap-core-nav-list .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav .wrap-core-nav-list .menu li {
+    display: inline-block;
+}
+
+nav .wrap-core-nav-list .menu li a {
+    display: block;
+    padding: 20px 25px;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav .wrap-core-nav-list .menu li.active a {
+    color: #ff9323;
+    text-decoration: line-through;
+}
+
+nav .wrap-core-nav-list .menu li a:hover {
+    color: #ff9323;
+    text-decoration: line-through;
+}
+
+/* Remove the previous underline effect */
+nav .wrap-core-nav-list .menu li a::after {
+    display: none;
+}
+
+/* Remove any accidental section header styling */
+section h2::after,
+section h2:hover::after {
+    content: none;
+    width: 0;
+}
+
+/* Mobile navigation styles */
 @media (max-width: 992px) {
     nav .full-container,
     nav .nav-container {
@@ -81,46 +190,32 @@ nav.scrolled .nav-header{
     }
 
     nav .nav-header {
-        min-height: 60px;
+        display: block;
+        text-align: right;
+        padding: 20px;
     }
 
-    nav .nav-header .brand {
-        margin: 0 auto 5px;
-        float: none;
-    }
-
-    nav .nav-header .toggle-bar {
-        font-size: 18px;
+    nav .wrap-core-nav-list {
+        background: #1a1a1a;
         position: absolute;
-        top: 17px;
-        left: 15px;
-        color: #fff;
+        width: 100%;
+        left: 0;
+        top: 100%;
+        border-top: 1px solid rgba(255,255,255,0.1);
     }
 
-    nav.scrolled .nav-header .toggle-bar{
-        color: #333;
+    nav .wrap-core-nav-list .menu {
+        flex-direction: column;
     }
 
-    .core-nav .wrap-core-nav-list{
-        border-top: solid 1px rgba(255, 255, 255, 0.2);
-        border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+    nav .wrap-core-nav-list .menu li {
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    nav .menu li a {
-        padding: 10px 10px;
-        border-bottom: solid 1px rgba(255, 255, 255, 0.2);
-    }
-
-    nav .menu li:last-child a {
-        border-bottom: none;
-    }
-
-    nav.scrolled .wrap-core-nav-list{
-        border-top: solid 1px #dfdfdf;
-        border-bottom: solid 1px #dfdfdf;
-    }
-
-    nav.scrolled .menu li a {
-        border-bottom: solid 1px #dfdfdf;
+    nav .wrap-core-nav-list .menu li a {
+        padding: 15px 25px;
+        text-align: left;
     }
 }
