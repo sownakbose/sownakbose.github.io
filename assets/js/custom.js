@@ -6,14 +6,7 @@ $(document).ready(function () {
 			NAVIGATION
     ========================================================*/
 
-	$('nav').coreNavigation({
-		menuPosition: "right", // left, right, center, bottom
-		container: true, // true or false
-		mode: 'fixed',
-		onInit: function () {
-			console.log('Init coreNav');
-		}
-	});
+	// Navigation is now initialized in the head of the document
 
 	$(window).on('scroll', function () {
 		if ($(window).scrollTop() > 0) {
@@ -66,13 +59,6 @@ $(document).ready(function () {
 			PRELOADER
     ========================================================*/
 
-	$(window).load(function () { // makes sure the whole site is loaded
-		$('.preloader-holder .loader').fadeOut(); // will first fade out the loading animation
-		$('.preloader-holder').delay(350).fadeOut('slow');
-		// will fade out the white DIV that covers the website.
-		$('body').delay(350).css({
-			'overflow': 'visible'
-		});
-	});
+	// Preloader is now handled in the head of the document
 
 });
