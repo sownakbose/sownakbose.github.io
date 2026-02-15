@@ -1,19 +1,56 @@
 $(document).ready(function () {
 
-	"use strict"; // Start of use strict
+	"use strict";
+
+	// Initialize CoreNav first (it restructures the DOM)
+	if ($.fn.coreNavigation) {
+		$('nav').coreNavigation({
+			menuPosition: "right",
+			container: true,
+			mode: 'fixed',
+			responsideSlide: true,
+			animated: true,
+			animatedIn: 'fadeInDown',
+			animatedOut: 'fadeOutUp'
+		});
+	}
 
 	/*=======================================================
 			NAVIGATION
     ========================================================*/
 
-	// Navigation is now initialized in the head of the document
-
+	// Nav background on scroll + active section highlighting
 	$(window).on('scroll', function () {
-		if ($(window).scrollTop() > 0) {
+		var scrollPos = $(window).scrollTop();
+
+		// Nav background
+		if (scrollPos > 0) {
 			$('nav').addClass('scrolled');
 		} else {
 			$('nav').removeClass('scrolled');
 		}
+
+		// Active section highlighting
+		var currentId = '';
+		$('section').each(function() {
+			var sectionTop = $(this).offset().top - 100;
+			if (scrollPos >= sectionTop && $(this).attr('id')) {
+				currentId = $(this).attr('id');
+			}
+		});
+		if (currentId) {
+			$('.menu li').removeClass('active');
+			$('.menu li a[href="#' + currentId + '"]').parent().addClass('active');
+		}
+	});
+
+	// Smooth scroll for navigation links
+	$('nav .menu li a').on('click', function(e) {
+		e.preventDefault();
+		var target = $(this).attr('href');
+		$('html, body').animate({
+			scrollTop: $(target).offset().top - 69
+		}, 800);
 	});
 
 	/*=======================================================
@@ -37,28 +74,9 @@ $(document).ready(function () {
 	});
 
 	/*=======================================================
-			OWL CAROUSEL TESTIMONIALS
-    ========================================================*/
-
-	$(".owl-testimonials").owlCarousel({
-		items: 1,
-		nav: false,
-		autoplay: true,
-		loop: true,
-		autoplayTimeout: 8000,
-		autoplayHoverPause: true
-	});
-
-	/*=======================================================
 			WOW JS
     ========================================================*/
 
 	new WOW().init();
-
-	/*=======================================================
-			PRELOADER
-    ========================================================*/
-
-	// Preloader is now handled in the head of the document
 
 });

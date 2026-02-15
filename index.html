@@ -3,102 +3,6 @@
 
 <head>
 
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9VNHRPXZE1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9VNHRPXZE1');
-</script>
-
-	<!-- jQuery (required for preloader) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	<script>
-		// Fallback to remove preloader if it's stuck
-		setTimeout(function() {
-			$('.preloader-holder').fadeOut('slow');
-			$('body').css('overflow', 'visible');
-		}, 5000); // 5 second fallback
-
-		// Initialize functionality after DOM is ready
-		$(document).ready(function() {
-			console.log('DOM Ready');
-			
-			// Initialize scrollspy
-			$('body').scrollspy({
-				target: '.wrap-core-nav-list',
-				offset: 70
-			});
-
-			// Refresh scrollspy when the page is fully loaded
-			$(window).on('load', function() {
-				$('body').scrollspy('refresh');
-			});
-
-			// Handle scroll events for navigation highlighting
-			$(window).on('scroll', function() {
-				var scrollPos = $(document).scrollTop();
-				
-				// Find which section we're in
-				$('section').each(function() {
-					var top = $(this).offset().top - 100,
-						bottom = top + $(this).outerHeight();
-
-					if (scrollPos >= top && scrollPos <= bottom) {
-						$('nav .menu li').removeClass('active');
-						$('nav .menu li a[href="#' + $(this).attr('id') + '"]').parent().addClass('active');
-					}
-				});
-			});
-			
-			// Smooth scroll for navigation links
-			$('nav .menu li a').on('click', function(e) {
-				e.preventDefault();
-				var target = $(this).attr('href');
-				$('html, body').animate({
-					scrollTop: $(target).offset().top - 69
-				}, 1000);
-			});
-			
-			// Load required scripts in sequence
-			$.getScript('assets/js/corenav-master/corenav-master/dist/coreNavigation-1.1.3.min.js')
-				.done(function() {
-					console.log('CoreNav loaded');
-					// Initialize CoreNav after it's loaded
-					$('nav').coreNavigation({
-						menuPosition: "right",
-						container: true,
-						mode: 'fixed',
-						responsideSlide: true,
-						animated: true,
-						animatedIn: 'fadeInDown',
-						animatedOut: 'fadeOutUp',
-						onInit: function() {
-							$(window).on('scroll', function () {
-								if ($(window).scrollTop() > 0) {
-									$('nav').addClass('scrolled');
-								} else {
-									$('nav').removeClass('scrolled');
-								}
-							});
-						}
-					});
-				})
-				.fail(function(jqxhr, settings, exception) {
-					console.log('CoreNav load failed:', exception);
-				});
-		});
-
-		// Handle preloader on window load
-		$(window).on('load', function () {
-			console.log('Window loaded');
-			$('.preloader-holder').fadeOut('slow');
-			$('body').css('overflow', 'visible');
-		});
-	</script>
-
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Dr. Sownak Bose - Associate Professor & UKRI Future Leaders Fellow at Durham University's Institute for Computational Cosmology. Research in computational cosmology and galaxy formation.">
@@ -115,6 +19,19 @@
 	<meta http-equiv="X-Content-Type-Options" content="nosniff">
 	<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
 
+	<!-- Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9VNHRPXZE1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'G-9VNHRPXZE1');
+	</script>
+
+	<!-- Preconnect for faster font loading -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 	<!-- // CSS FILES // -->
 
 	<!-- Bootstrap -->
@@ -129,10 +46,6 @@
 	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="assets/css/animate.css">
-	<!-- Line Icons -->
-	<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-	<!-- LightBox -->
-	<link rel="stylesheet" href="assets/js/lightbox/dist/css/lightbox.min.css">
 	<!-- Style -->
 	<link rel="stylesheet" href="assets/css/style.css">
 	<!-- Academicons -->
@@ -141,11 +54,25 @@
 	<!--// SITES TITLE // -->
 	<title>Sownak Bose</title>
 
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		// Dismiss preloader on page load (must be inline to catch the load event)
+		$(window).on('load', function () {
+			$('.preloader-holder').fadeOut('slow');
+			$('body').css('overflow', 'visible');
+		});
+		// Fallback in case load event already fired
+		setTimeout(function() {
+			$('.preloader-holder').fadeOut('slow');
+			$('body').css('overflow', 'visible');
+		}, 2000);
+	</script>
 
 </head>
 
 
-<body data-spy="scroll" data-target=".wrap-core-nav-list" data-offset="70" bgcolor="#000">
+<body>
 
 	<!-- ==============================================
     Preloader
@@ -157,14 +84,17 @@
 		</div>
 	</div>
 
+	<!-- Skip to content for accessibility -->
+	<a href="#about" class="skip-to-content">Skip to main content</a>
+
 	<!-- ==============================================
     NAVBAR
     =============================================== -->
 
-	<nav>
+	<nav role="navigation" aria-label="Main navigation">
 		<div class="nav-container">
 			<div class="nav-header">
-				<button class="toggle-bar">
+				<button class="toggle-bar" aria-label="Toggle navigation menu">
 					<span class="fa fa-bars"></span>
 				</button>
 			</div>
@@ -236,10 +166,9 @@
 			<h2>About Me</h2>
 			<div class="about-content">
 				<div class="about-img">
-					<img src="images/full.jpg" class="img-fluid" alt="about">
+					<img src="images/full.jpg" class="img-fluid" alt="Dr. Sownak Bose">
 				</div>
 				<div class="about-text">
-					<p></p>
 					<p>
 						I am an astronomer at the <a href="https://icc.dur.ac.uk/" target="_blank">Institute for Computational Cosmology</a>, 
 						part of the <a href="https://www.durham.ac.uk/departments/academic/physics/" target="_blank">Department of Physics</a> 
@@ -266,64 +195,31 @@
 	</section>
 
 
-	<!-- <section id="features">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".2s">
-					<div class="feature-box">
-						<span class="lnr lnr-rocket"></span>
-						<h4>Creative Design</h4>
-						<p>We work systematically to integrate corporate responsibility in our core.</p>
-					</div>
-				</div>
-				<div class="col-lg-4 wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".4s">
-					<div class="feature-box">
-						<span class="lnr lnr-laptop-phone"></span>
-						<h4>Unique Layouts</h4>
-						<p>We work systematically to integrate corporate responsibility in our core.</p>
-					</div>
-				</div>
-				<div class="col-lg-4 wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".6s">
-					<div class="feature-box">
-						<span class="lnr lnr-bubble"></span>
-						<h4>24/7 Support</h4>
-						<p>We work systematically to integrate corporate responsibility in our core.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
+
+
 
 	<!-- ==============================================
     CV
     =============================================== -->
 
 	<section id="services">
-				<div class="container">
-				<h2>Curriculum Vitae</h2>
-				<center>
+		<div class="container">
+			<h2>Curriculum Vitae</h2>
+			<div class="cv-embed">
 				<object data="Sownak_CV_short.pdf" type="application/pdf" width="800px" height="600px">
-				<embed src="Sownak_CV_short.pdf" type="application/pdf" />
+					<embed src="Sownak_CV_short.pdf" type="application/pdf" />
 				</object>
-			</center>
-				<br>...or click <a href="Sownak_CV_short.pdf" target="_blank">here</a> if the CV does
+			</div>
+			<p class="cv-fallback">
+				...or click <a href="Sownak_CV_short.pdf" target="_blank">here</a> if the CV does
 				not show up on your browser. You can find a full list of my publications
 				<a href="https://ui.adsabs.harvard.edu/public-libraries/2YBvbfg1SpucMFdcMhmFXA" target="_blank"><b>here</b></a>.
-				<!--<iframe src="Sownak_CV_short.pdf" width="800px" height="600px"></iframe>-->
-			</div>
-		</section>
-
-	<!-- ==============================================
-    CALL TO ACTION
-    =============================================== -->
-
-	<section id="call-to-action">
-
+			</p>
+		</div>
 	</section>
 
-	<!-- ==============================================
-    RESEARCH
-    =============================================== -->
+
+
 
 	<section id="portfolio">
 			<div class="svg-wave">
@@ -399,49 +295,8 @@
 	</section>
 
 
-	<!-- ==============================================
-    TESTIMONIALS
-    =============================================== -->
-<!--
-	<section id="testimonials">
-		<div class="container">
-			<h2>Testimonials</h2>
-			<div class="row">
-				<div class="col-lg-8 col-sm-offset-2 mx-auto wow fadeInDown" data-wow-duration=".2s" data-wow-delay=".4s">
-					<div class="owl-carousel owl-testimonials">
-						<div class="item">
-							<img src="https://via.placeholder.com/90x90" class="img-fluid" alt="client-1">
-							<h6>Adam Joe</h6>
-							<span>Micro CEO</span>
-							<span class="lnr lnr-smile"></span>
-							<p class="quote">"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia."</p>
-						</div>
-						<div class="item">
-							<img src="https://via.placeholder.com/90x90" class="img-fluid" alt="client-2">
-							<h6>Maria Merline</h6>
-							<span>Web Designer</span>
-							<span class="lnr lnr-smile"></span>
-							<p class="quote">"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia."</p>
-						</div>
-						<div class="item">
-							<img src="https://via.placeholder.com/90x90" class="img-fluid" alt="client-3">
-							<h6>Jason Wasghinton</h6>
-							<span>Web Developer</span>
-							<span class="lnr lnr-smile"></span>
-							<p class="quote">"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia."</p>
-						</div>
-						<div class="item">
-							<img src="https://via.placeholder.com/90x90" class="img-fluid" alt="client-4">
-							<h6>Sara Doe</h6>
-							<span>Graphic Designer</span>
-							<span class="lnr lnr-smile"></span>
-							<p class="quote">"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia."</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
+
+
 
 	<!-- ==============================================
     TEAM
@@ -460,11 +315,6 @@
 							<h4>Dr. Alejandra Aguirre-Santaella</h4>
 							<p><a href="https://www.durham.ac.uk/staff/alejandra-aguirre-santaella/" target="_blank">Dr. Alejandra Aguirre-Santaella </a> <br> Postdoc</p>
 							<p> Research interests: Dark matter, cosmological simulations, galaxy formation</p>
-							<!-- <ul class="social-media">
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-							</ul> -->
 						</div>
 					</div>
 				</div>
@@ -478,11 +328,6 @@
 							<h4>Dr. Shengdong Lu</h4>
 							<p><a href="https://www.durham.ac.uk/staff/shengdong-lu/" target="_blank">Dr. Shengdong Lu </a> <br> Postdoc</p>
 							<p> Research interests: Cosmology, galaxy formation, high-redshift galaxies</p>
-							<!-- <ul class="social-media">
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-							</ul> -->
 						</div>
 					</div>
 				</div>
@@ -499,45 +344,30 @@
 							<h4>Dr. Daniele Sorini</h4>
 							<p><a href="https://www.durham.ac.uk/staff/daniele-sorini/" target="_blank">Dr. Daniele Sorini </a> <br> Postdoc</p>
 							<p> Research interests: Cosmology, galaxy formation, large-scale structure, circumgalactic medium</p>
-							<!-- <ul class="social-media">
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-							</ul> -->
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".4s">
 					<div class="team-member">
 						<div class="team-img">
-							<img src="images/members/mcmullan.jpeg" class="img-fluid" alt="team-2">
+							<img src="images/members/mcmullan.jpeg" class="img-fluid" alt="Mac McMullan - PhD Student" loading="lazy">
 						</div>
 						<div class="team-caption">
 							<h4>Mac McMullan</h4>
 							<p><a href="https://www.durham.ac.uk/staff/mac-m-mcmullan/" target="_blank"> Mac McMullan </a> <br>Third Year PhD Student</p>
 							<p> Research interests: Dwarf galaxies, dark matter, semi-analytic galaxy formation, black holes</p>
-							<!-- <ul class="social-media">
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-							</ul> -->
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".6s">
 					<div class="team-member">
 						<div class="team-img">
-							<img src="images/members/wang.JPG" class="img-fluid" alt="team-3">
+							<img src="images/members/wang.JPG" class="img-fluid" alt="Yuchan Wang - PhD Student" loading="lazy">
 						</div>
 						<div class="team-caption">
 							<h4>Yuchan Wang</h4>
 							<p><a href="https://www.durham.ac.uk/staff/yuchan-wang/" target="_blank"> Yuchan Wang </a> <br>Fourth Year PhD Student</p>
 							<p> Research interests: Dark matter, small-scale structure, cosmological zoom simulations, cosmic web</p>
-							<!-- <ul class="social-media">
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-							</ul> -->
 						</div>
 					</div>
 				</div>
@@ -545,17 +375,12 @@
 				<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".6s">
 					<div class="team-member">
 						<div class="team-img">
-							<img src="images/members/sureda.jpg" class="img-fluid" alt="team-3">
+							<img src="images/members/sureda.jpg" class="img-fluid" alt="Joaquin Sureda - PhD Student" loading="lazy">
 						</div>
 						<div class="team-caption">
 							<h4>Joaquin Sureda</h4>
 							<p><a href="https://www.durham.ac.uk/staff/joaquin-m-sureda/" target="_blank"> Joaquin Sureda </a> <br>Third Year PhD Student</p>
 							<p> Research interests: Dwarf galaxies, cosmological hydrodynamical simulations, dark matter</p>
-							<!-- <ul class="social-media">
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-							</ul> -->
 						</div>
 					</div>
 				</div>
@@ -563,17 +388,12 @@
 				<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".6s">
 					<div class="team-member">
 						<div class="team-img">
-							<img src="images/members/johnston.jpg" class="img-fluid" alt="team-3">
+							<img src="images/members/johnston.jpg" class="img-fluid" alt="Sarah Johnston - PhD Student" loading="lazy">
 						</div>
 						<div class="team-caption">
 							<h4>Sarah Johnston</h4>
 							<p><a href="https://www.durham.ac.uk/staff/sarah-c-johnston/" target="_blank"> Sarah Johnston </a> <br> Third Year PhD Student</p>
 							<p> Research interests: Cosmological simulations with GPUs, high-performance computing, dark matter</p>
-							<!-- <ul class="social-media">
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-							</ul> -->
 						</div>
 					</div>
 				</div>
@@ -581,17 +401,12 @@
 				<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".6s">
 					<div class="team-member">
 						<div class="team-img">
-							<img src="https://www.durham.ac.uk/media/durham-university/site-assets/image/Blank-profile-INK.png" class="img-fluid" alt="team-3">
+							<img src="https://www.durham.ac.uk/media/durham-university/site-assets/image/Blank-profile-INK.png" class="img-fluid" alt="Michael Collier - PhD Student" loading="lazy">
 						</div>
 						<div class="team-caption">
 							<h4>Michael Collier</h4>
 							<p><a href="https://www.durham.ac.uk/staff/michael-collier/" target="_blank"> Michael Collier </a> <br> Third Year PhD Student</p>
 							<p> Research interests: Modified gravity, tests of gravity, hydrodynamical simulations, galaxy-halo connection</p>
-							<!-- <ul class="social-media">
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-							</ul> -->
 						</div>
 					</div>
 				</div>
@@ -603,17 +418,12 @@
 						<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".6s">
 							<div class="team-member">
 								<div class="team-img">
-									<img src="images/members/nan_zheng.jpg" class="img-fluid" alt="team-3">
+									<img src="images/members/nan_zheng.jpg" class="img-fluid" alt="Haonan Zheng - Visiting PhD Student" loading="lazy">
 								</div>
 								<div class="team-caption">
 									<h4>Haonan Zheng</h4>
 									<p><a href="https://www.durham.ac.uk/staff/haonan-zheng/" target="_blank"> Haonan Zheng </a> <br> Visiting PhD Student; now KIAA Fellow at Peking University</p>
 									<p> Research interests: Dark matter, cosmological zoom simulations, numerical methods</p>
-									<!-- <ul class="social-media">
-										<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-										<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-									</ul> -->
 								</div>
 							</div>
 						</div>	
@@ -621,17 +431,12 @@
 						<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".6s">
 							<div class="team-member">
 								<div class="team-img">
-									<img src="images/members/saha.JPG" class="img-fluid" alt="team-3">
+									<img src="images/members/saha.JPG" class="img-fluid" alt="Bipradeep Saha - Undergraduate Researcher" loading="lazy">
 								</div>
 								<div class="team-caption">
 									<h4>Bipradeep Saha</h4>
 									<p> <a href="https://sparxastronomy.github.io/pages/about.html" target="_blank"> Bipradeep Saha </a> <br> Undegraduate at the IISER (Kolkata, India); now PhD student at MPIA, Heidelberg</p>
 									<p> Research interests: Galaxy formation, effects of baryons on large-scale structure</p>
-									<!-- <ul class="social-media">
-										<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-										<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-									</ul> -->
 								</div>
 							</div>
 						</div>	
@@ -641,17 +446,12 @@
 					<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".6s">
 						<div class="team-member">
 							<div class="team-img">
-								<img src="https://www.durham.ac.uk/media/durham-university/site-assets/image/Blank-profile-INK.png" class="img-fluid" alt="team-3">
+								<img src="https://www.durham.ac.uk/media/durham-university/site-assets/image/Blank-profile-INK.png" class="img-fluid" alt="Yash Gondhalekar - Undergraduate Researcher" loading="lazy">
 							</div>
 							<div class="team-caption">
 								<h4>Yash Gondhalekar</h4>
 								<p><a href="https://in.linkedin.com/in/yash-gondhalekar-0924361b2?original_referer=https%3A%2F%2Fwww.google.co.uk%2F" target="_blank"> Yash Gondhalekar </a> <br> Undegraduate at BITS Pilani (Goa, India); now PhD student at UCL</p>
 								<p> Research interests: Machine learning, artificial intelligence, cosmological simulations, modified gravity</p>
-								<!-- <ul class="social-media">
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-								</ul> -->
 							</div>
 						</div>
 					</div>	
@@ -663,29 +463,13 @@
 		</div>
 	</section>
 
-		<!-- ==============================================
-		CALL TO ACTION
-		=============================================== -->
 
-		<section id="call-to-action">
 
-		</section>
-	
-	
-		<section id="testimonials">
-			<div class="container">
-				<h2>Outreach & Education</h2>
-				<!-- <div class="row"> -->
-					<!-- <div class="col-lg-6 wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".4s">
-						<div class="about-img">
-							<img src="images/full.jpg" class="img-fluid" alt="about">
-						</div>
-					</div> -->
-				<!-- <div class="col-lg-6 about-content wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".6s"> -->
-	
-						<p> Under construction!
-		​										 </p>
-	
+	<section id="testimonials">
+		<div class="container">
+			<h2>Outreach & Education</h2>
+			<p>Under construction!</p>
+		</div>
 	</section>
 
 	<!-- ==============================================
@@ -753,8 +537,8 @@
 
 	<!-- // JS FILES // -->
 
-	<!-- jQuery Easing -->
-	<script defer src="assets/js/jquery.easing.min.js"></script>
+	<!-- Bootstrap Dependencies -->
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<!-- Bootstrap -->
 	<script defer src="assets/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
 	<!-- Core Navigation -->
@@ -763,12 +547,8 @@
 	<script defer src="assets/js/owl.carousel.min.js"></script>
 	<!-- Wow -->
 	<script defer src="assets/js/wow-1.3.0.min.js"></script>
-	<!-- LightBox -->
-	<script defer src="assets/js/lightbox/dist/js/lightbox.min.js"></script>
 	<!-- Custom -->
 	<script defer src="assets/js/custom.js"></script>
-	<!-- Bootstrap Dependencies -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 </body>
 
 </html>

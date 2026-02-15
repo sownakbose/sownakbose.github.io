@@ -161,24 +161,30 @@ nav .wrap-core-nav-list .menu li a {
 
 nav .wrap-core-nav-list .menu li.active a {
     color: #ff9323;
-    text-decoration: line-through;
+    text-decoration: none;
 }
 
 nav .wrap-core-nav-list .menu li a:hover {
     color: #ff9323;
-    text-decoration: line-through;
+    text-decoration: none;
 }
 
-/* Remove the previous underline effect */
+/* Smooth underline animation for nav links */
 nav .wrap-core-nav-list .menu li a::after {
-    display: none;
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #ff9323;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
 }
 
-/* Remove any accidental section header styling */
-section h2::after,
-section h2:hover::after {
-    content: none;
-    width: 0;
+nav .wrap-core-nav-list .menu li.active a::after,
+nav .wrap-core-nav-list .menu li:hover a::after {
+    width: calc(100% - 50px);
 }
 
 /* Mobile navigation styles */
