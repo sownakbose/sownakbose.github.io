@@ -44,13 +44,27 @@ $(document).ready(function () {
 		}
 	});
 
-	// Smooth scroll for navigation links
-	$('nav .menu li a').on('click', function(e) {
-		e.preventDefault();
-		var target = $(this).attr('href');
-		$('html, body').animate({
-			scrollTop: $(target).offset().top - 69
-		}, 800);
+	// Smooth scroll for navigation links (desktop and mobile)
+	$(document).on('click', 'nav .menu li a, nav a[href^="#"]', function(e) {
+		var href = $(this).attr('href');
+		
+		// Only handle hash links
+		if (href && href.startsWith('#') && href !== '#') {
+			e.preventDefault();
+			var target = href;
+			
+			// Close mobile menu if open
+			if ($('nav').hasClass('menuopen')) {
+				$('.nav-header .nav-brand').trigger('click');
+			}
+			
+			// Smooth scroll to target
+			if ($(target).length) {
+				$('html, body').animate({
+					scrollTop: $(target).offset().top - 69
+				}, 800);
+			}
+		}
 	});
 
 	/*=======================================================

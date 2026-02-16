@@ -522,7 +522,8 @@ nav.scrolled .menu li a:active {
 
 #portfolio .portfolio-item .item-img img {
 	width: 100%;
-	height: auto;
+	height: 250px;
+	object-fit: cover;
 }
 
 #portfolio .portfolio-item .item-info {
@@ -664,19 +665,193 @@ nav.scrolled .menu li a:active {
 	padding: 120px 0;
 }
 
-#services .cv-embed {
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-#services .cv-fallback {
-	text-align: center;
-	margin-top: 10px;
-}
-
 #services h2 {
 	text-align: center;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
+}
+
+/* CV Highlights Layout */
+.cv-highlights {
+	max-width: 1000px;
+	margin: 0 auto 50px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 25px;
+}
+
+.cv-section {
+	background: rgba(26, 26, 26, 0.6);
+	padding: 25px 20px;
+	border-radius: 12px;
+	border-left: 4px solid #ad67ea;
+}
+
+.cv-section-full {
+	grid-column: 1 / -1;
+	border-left: 4px solid #ff9323;
+}
+
+.cv-section h3 {
+	color: #ff9323;
+	font-size: 1.2rem;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.cv-section h3 i {
+	color: #ad67ea;
+	font-size: 1rem;
+}
+
+.cv-item {
+	margin-bottom: 18px;
+	padding-bottom: 18px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cv-item:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.cv-item h4 {
+	color: #fff;
+	font-size: 1rem;
+	margin-bottom: 6px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.cv-item p {
+	color: #ccc;
+	margin-bottom: 5px;
+	font-size: 0.9rem;
+	line-height: 1.4;
+}
+
+.cv-item .cv-date {
+	color: #8aecec;
+	font-size: 0.85rem;
+	font-style: italic;
+}
+
+/* Awards Grid */
+.cv-awards-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+
+.cv-award-item {
+	display: flex;
+	gap: 12px;
+	align-items: flex-start;
+	padding: 15px;
+	background: rgba(173, 103, 234, 0.05);
+	border-radius: 6px;
+	border-left: 3px solid #ad67ea;
+	transition: all 0.3s ease;
+}
+
+.cv-award-item:hover {
+	background: rgba(173, 103, 234, 0.1);
+	transform: translateY(-2px);
+}
+
+.award-icon {
+	flex-shrink: 0;
+	width: 32px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1rem;
+	color: #ad67ea;
+	margin-top: 2px;
+}
+
+.award-content h4 {
+	color: #fff;
+	font-size: 0.95rem;
+	margin-bottom: 5px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.award-content p {
+	color: #ccc;
+	font-size: 0.8rem;
+	line-height: 1.4;
+	margin: 0;
+}
+
+.award-content .cv-date {
+	color: #8aecec;
+	font-size: 0.8rem;
+	font-style: italic;
+	margin-bottom: 5px;
+	display: block;
+}
+
+/* CV Download Section */
+.cv-download {
+	text-align: center;
+	padding: 40px 0 0;
+	border-top: 2px solid rgba(173, 103, 234, 0.3);
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.cv-download .btn-lg {
+	padding: 15px 40px;
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+
+.cv-download .btn i {
+	margin-right: 10px;
+}
+
+.cv-link-secondary {
+	margin-top: 20px;
+	color: #ccc;
+	font-size: 0.95rem;
+}
+
+.cv-link-secondary a {
+	color: #8aecec;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.cv-link-secondary a:hover {
+	color: #ff9323;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.cv-highlights {
+		grid-template-columns: 1fr;
+		gap: 25px;
+	}
+	
+	.cv-awards-grid {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+	
+	.cv-section {
+		padding: 25px 20px;
+	}
+	
+	.cv-download .btn-lg {
+		padding: 12px 30px;
+		font-size: 1rem;
+	}
+}
 }
 
 #services h2:after {
@@ -764,8 +939,8 @@ nav.scrolled .menu li a:active {
 }
 
 #team .team-member {
-	margin-bottom: 40px;
-	padding: 25px 15px;
+	margin-bottom: 30px;
+	padding: 20px 15px;
 	border-radius: 12px;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -776,8 +951,8 @@ nav.scrolled .menu li a:active {
 }
 
 #team .team-member .team-img img {
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	object-fit: cover;
 	border-radius: 50%;
 	margin: 0 auto;
@@ -1117,6 +1292,128 @@ footer a:active {
 	top: 0;
 	color: #000;
 	text-decoration: none;
+}
+
+/* ==========================================================
+   OUTREACH & EDUCATION SECTION
+========================================================*/
+.outreach-intro {
+	max-width: 900px;
+	margin: 30px auto 40px;
+	font-size: 1.05rem;
+	line-height: 1.7;
+	text-align: center;
+}
+
+.outreach-intro p {
+	margin-bottom: 0;
+}
+
+.outreach-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+	margin-top: 40px;
+}
+
+.outreach-card {
+	background: rgba(26, 26, 26, 0.8);
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+	transition: all 0.3s ease;
+}
+
+.outreach-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 25px rgba(173, 103, 234, 0.3);
+}
+
+.outreach-image {
+	background: rgba(255, 255, 255, 0.05);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 220px;
+	padding: 20px;
+}
+
+.outreach-image img {
+	width: 100%;
+	max-height: 220px;
+	object-fit: contain;
+}
+
+.outreach-content {
+	padding: 25px;
+}
+
+.outreach-content h3 {
+	color: #ff9323;
+	margin-bottom: 10px;
+	font-size: 1.75rem;
+}
+
+.outreach-content .tagline {
+	color: #ad67ea;
+	font-style: italic;
+	margin-bottom: 15px;
+	font-size: 1.1rem;
+	display: block;
+}
+
+.outreach-content p {
+	margin-bottom: 20px;
+	line-height: 1.6;
+}
+
+.podcast-platforms {
+	margin: 20px 0;
+	font-size: 24px;
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+}
+
+.podcast-platforms a {
+	color: #8aecec;
+	transition: all 0.3s ease;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: rgba(138, 236, 236, 0.1);
+}
+
+.podcast-platforms a:hover {
+	color: #ff9323;
+	background: rgba(255, 147, 35, 0.2);
+	transform: translateY(-3px);
+}
+
+.outreach-content .btn {
+	margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+	.outreach-grid {
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+	
+	.outreach-image {
+		min-height: 200px;
+	}
+	
+	.outreach-image img {
+		max-height: 200px;
+	}
+	
+	.outreach-content {
+		padding: 20px;
+	}
 }
 
 /*# sourceMappingURL=style.css.map */
