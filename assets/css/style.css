@@ -1177,7 +1177,7 @@ footer a:active {
 	}
 
 	#team {
-		padding: 60px 0;
+		padding: 80px 0 60px;
 	}
 
 	/* Show research card overlays on mobile (no hover) */
@@ -1186,6 +1186,8 @@ footer a:active {
 		position: relative;
 		border-radius: 0 0 8px 8px;
 		background: rgba(173, 103, 234, 0.9);
+		justify-content: flex-start;
+		padding: 15px;
 	}
 
 	#portfolio .portfolio-item .item-info .heading-3,
