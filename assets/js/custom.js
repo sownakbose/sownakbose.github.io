@@ -13,33 +13,6 @@ $(document).ready(function () {
 			animatedIn: 'fadeInDown',
 			animatedOut: 'fadeOutUp'
 		});
-		
-		// Wait for CoreNav to complete initialization, then bind mobile menu clicks
-		setTimeout(function() {
-			$(document).on('click', '.wrap-core-nav-list .menu li a', function(e) {
-				var href = $(this).attr('href');
-				
-				// Only handle hash links
-				if (href && href.startsWith('#') && href !== '#') {
-					e.preventDefault();
-					e.stopPropagation();
-					
-					var target = href;
-					
-					// Close mobile menu if open
-					if ($('nav').hasClass('menuopen')) {
-						$('.nav-toggle').trigger('click');
-					}
-					
-					// Smooth scroll to target
-					if ($(target).length) {
-						$('html, body').animate({
-							scrollTop: $(target).offset().top - 69
-						}, 800);
-					}
-				}
-			});
-		}, 500);
 	}
 
 	/*=======================================================
@@ -71,20 +44,29 @@ $(document).ready(function () {
 		}
 	});
 
-	// Smooth scroll for desktop navigation links
-	$(document).on('click', 'nav .menu li a:not(.wrap-core-nav-list .menu li a)', function(e) {
+	// Smooth scroll for all navigation links
+	$(document).on('click', 'nav .menu li a', function(e) {
 		var href = $(this).attr('href');
 		
 		// Only handle hash links
 		if (href && href.startsWith('#') && href !== '#') {
 			e.preventDefault();
+			e.stopPropagation();
+			
 			var target = href;
+			
+			// Close mobile menu if open
+			if ($('nav').hasClass('open-responsive')) {
+				$('.toggle-bar').trigger('click');
+			}
 			
 			// Smooth scroll to target
 			if ($(target).length) {
-				$('html, body').animate({
-					scrollTop: $(target).offset().top - 69
-				}, 800);
+				setTimeout(function() {
+					$('html, body').animate({
+						scrollTop: $(target).offset().top - 69
+					}, 800);
+				}, 100);
 			}
 		}
 	});
