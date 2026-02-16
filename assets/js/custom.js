@@ -51,22 +51,21 @@ $(document).ready(function () {
 		// Only handle hash links
 		if (href && href.startsWith('#') && href !== '#') {
 			e.preventDefault();
-			e.stopPropagation();
 			
 			var target = href;
+			var $target = $(target);
 			
 			// Close mobile menu if open
 			if ($('nav').hasClass('open-responsive')) {
-				$('.toggle-bar').trigger('click');
+				$('.toggle-bar').click(); // Use click() instead of trigger('click')
+				$('body').css('overflow', ''); // Clear potential overflow hidden
 			}
 			
 			// Smooth scroll to target
-			if ($(target).length) {
-				setTimeout(function() {
-					$('html, body').animate({
-						scrollTop: $(target).offset().top - 69
-					}, 800);
-				}, 100);
+			if ($target.length) {
+				$('html, body').stop().animate({
+					scrollTop: $target.offset().top - 69
+				}, 800);
 			}
 		}
 	});
