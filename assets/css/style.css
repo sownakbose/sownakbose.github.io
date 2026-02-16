@@ -1201,6 +1201,41 @@ footer a:active {
 	#portfolio .portfolio-item .item-img {
 		border-radius: 8px 8px 0 0;
 	}
+
+	/* Compact horizontal team list on mobile */
+	#team .team-member {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		text-align: left;
+		padding: 15px;
+		margin-bottom: 15px;
+	}
+
+	#team .team-member .team-img {
+		flex-shrink: 0;
+		margin-right: 15px;
+	}
+
+	#team .team-member .team-img img {
+		width: 60px;
+		height: 60px;
+	}
+
+	#team .team-member h4 {
+		margin-top: 0;
+		margin-bottom: 5px;
+		font-size: 1rem;
+	}
+
+	#team .team-member p {
+		font-size: 0.85rem;
+		margin-bottom: 5px;
+	}
+
+	#team .team-member .team-caption {
+		flex: 1;
+	}
 }
 
 @media (max-width: 798px) {
