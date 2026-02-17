@@ -55,17 +55,27 @@ $(document).ready(function () {
 			var target = href;
 			var $target = $(target);
 			
-			// Close mobile menu if open
+			// Check if mobile menu is open
 			if ($('nav').hasClass('open-responsive')) {
-				$('.toggle-bar').click(); // Use click() instead of trigger('click')
-				$('body').css('overflow', ''); // Clear potential overflow hidden
-			}
-			
-			// Smooth scroll to target
-			if ($target.length) {
-				$('html, body').stop().animate({
-					scrollTop: $target.offset().top - 69
-				}, 800);
+				// Close menu
+				$('.toggle-bar').click();
+				$('body').css('overflow', '');
+				
+				// Wait for menu to start closing before scrolling
+				setTimeout(function() {
+					if ($target.length) {
+						$('html, body').stop().animate({
+							scrollTop: $target.offset().top - 69
+						}, 800);
+					}
+				}, 300); // 300ms delay to allow menu animation to start/finish
+			} else {
+				// Desktop or closed menu - scroll immediately
+				if ($target.length) {
+					$('html, body').stop().animate({
+						scrollTop: $target.offset().top - 69
+					}, 800);
+				}
 			}
 		}
 	});
