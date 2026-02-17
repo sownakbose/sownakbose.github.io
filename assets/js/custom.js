@@ -44,41 +44,68 @@ $(document).ready(function () {
 		}
 	});
 
-	// Smooth scroll for all navigation links
-	$(document).on('click', 'nav .menu li a', function(e) {
-		var href = $(this).attr('href');
-		
+	// Smooth scroll for navigation links
+	document.addEventListener('click', function(e) {
+		// Find if the clicked element or its parent is a nav link
+		var target = e.target;
+		var link = null;
+
+		// Walk up the DOM tree to find an anchor tag
+		for (var i = 0; i < 5; i++) {
+			if (!target) break;
+			if (target.tagName === 'A' && target.href) {
+				link = target;
+				break;
+			}
+			target = target.parentElement;
+		}
+
+		if (!link) return;
+
+		// Check if it's a nav link
+		var $link = $(link);
+		var isNavLink = $link.closest('nav').length > 0 || $link.closest('.wrap-core-nav-list').length > 0;
+
+		if (!isNavLink) return;
+
+		var href = link.getAttribute('href');
+
 		// Only handle hash links
 		if (href && href.startsWith('#') && href !== '#') {
 			e.preventDefault();
-			
-			var target = href;
-			var $target = $(target);
-			
-			// Check if mobile menu is open
-			if ($('nav').hasClass('open-responsive')) {
-				// Close menu
-				$('.toggle-bar').click();
+			e.stopPropagation();
+
+			var $target = $(href);
+
+			if (!$target.length) return;
+
+			// Check if we're on mobile
+			var isMobile = $('.toggle-bar').is(':visible');
+			var $nav = $('nav');
+			var isMenuOpen = $nav.hasClass('open-responsive');
+
+			if (isMobile && isMenuOpen) {
+				// Close the mobile menu
+				$nav.removeClass('open-responsive');
+				$('.core-responsive-slide').removeClass('open');
+				$('.dropdown-overlay').removeClass('open-dropdown');
+				$nav.removeClass('open-dropdown');
 				$('body').css('overflow', '');
-				
-				// Wait for menu to start closing before scrolling
+
+				// Scroll after menu closes
 				setTimeout(function() {
-					if ($target.length) {
-						$('html, body').stop().animate({
-							scrollTop: $target.offset().top - 69
-						}, 800);
-					}
-				}, 300); // 300ms delay to allow menu animation to start/finish
-			} else {
-				// Desktop or closed menu - scroll immediately
-				if ($target.length) {
 					$('html, body').stop().animate({
 						scrollTop: $target.offset().top - 69
 					}, 800);
-				}
+				}, 400);
+			} else {
+				// Desktop - scroll immediately
+				$('html, body').stop().animate({
+					scrollTop: $target.offset().top - 69
+				}, 800);
 			}
 		}
-	});
+	}, true); // Use capture phase to intercept before other handlers
 
 	/*=======================================================
 			OWL CAROUSEL
