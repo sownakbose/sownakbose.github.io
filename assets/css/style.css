@@ -472,19 +472,19 @@ nav.scrolled .menu li a:active {
 
 }
 
-#portfolio .svg-wave {
+.svg-wave {
 	width: 100%;
 	position: relative;
 	bottom: 60px;
 }
 
-#portfolio .svg-wave svg {
+.svg-wave svg {
 	background: #ac67ea;
 	width: 100%;
 	height: auto;
 }
 
-#portfolio .svg-wave svg path {
+.svg-wave svg path {
 	fill: #000;
 }
 
@@ -1017,22 +1017,6 @@ nav.scrolled .menu li a:active {
 	background: #000;
 }
 
-#contact .svg-wave {
-	width: 100%;
-	position: relative;
-	bottom: 60px;
-}
-
-#contact .svg-wave svg {
-	background: #ac67ea;
-	width: 100%;
-	height: auto;
-}
-
-#contact .svg-wave svg path {
-	fill: #000;
-}
-
 #contact h2 {
 	text-align: center;
 	margin-bottom: 80px;
@@ -1335,9 +1319,9 @@ footer a:active {
    OUTREACH & EDUCATION SECTION
 ========================================================*/
 .outreach-intro {
-	max-width: 900px;
+	max-width: 750px;
 	margin: 30px auto 40px;
-	font-size: 1.05rem;
+	font-size: 1.1em;
 	line-height: 1.7;
 	text-align: center;
 }
