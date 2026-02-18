@@ -54,6 +54,9 @@
 	<!--// SITES TITLE // -->
 	<title>Sownak Bose</title>
 
+	<!-- Favicon -->
+	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='60' text-anchor='middle' dominant-baseline='central' fill='%23ff9323'%3ESB%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script>
@@ -102,10 +105,10 @@
 				<ul class="menu">
 					<li class="scrollspy active"><a href="#home">Home</a></li>
 					<li class="scrollspy"><a href="#about">About Me</a></li>
-					<li class="scrollspy"><a href="#services">CV</a></li>
-					<li class="scrollspy"><a href="#portfolio">Research</a></li>		
+					<li class="scrollspy"><a href="#cv">CV</a></li>
+					<li class="scrollspy"><a href="#research">Research</a></li>		
 					<li class="scrollspy"><a href="#team">Group</a></li>
-					<li class="scrollspy"><a href="#testimonials">Outreach & Education</a></li>
+					<li class="scrollspy"><a href="#outreach">Outreach & Education</a></li>
 					<li class="scrollspy"><a href="#contact">Contact</a></li>
 				</ul>
 			</div>
@@ -119,40 +122,20 @@
 	<section class="slider-area" id="home">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="owl-carousel main-slider">
-					<!-- Single slide 1-->
-					<div class="single-slide slide-bg-1">
-						<div class="col-md-12">
-							<div class="tabel">
-								<div class="tabel-cell">
-									<div class="slider-content">
-										<h1>Hi! I'm Sownak.</h1>
-										<h3>Welcome to my website.</h3>
-										<a href="#about" class="btn btn-transparent">About Me</a>
-										<a href="#contact" class="btn btn-white">Contact Me</a>
-									</div>
-								</div>
+				<div class="col-md-12">
+					<div class="tabel">
+						<div class="tabel-cell">
+							<div class="slider-content">
+								<h1>Hi! I'm Sownak.</h1>
+								<h3>
+									I am an Associate Professor & <a href="https://www.ukri.org/our-work/developing-people-and-skills/future-leaders-fellowships/what-are-future-leaders-fellowships/" target="_blank"> UKRI Future Leaders Fellow</a> at <br> the <a href="https://icc.dur.ac.uk/" target="_blank">Institute for Computational Cosmology</a> at <a href="https://www.durham.ac.uk/" target="_blank">Durham University</a>
+								</h3>
+								<a href="#about" class="btn btn-transparent">About Me</a>
+								<a href="#contact" class="btn btn-white">Contact Me</a>
 							</div>
 						</div>
-					</div><!-- /.single-slide -->
-
-					<!-- Single slide 2 -->
-					<div class="single-slide slide-bg-2">
-						<div class="col-md-12">
-							<div class="tabel">
-								<div class="tabel-cell">
-									<div class="slider-content">
-										<h3>I am an Associate Professor & <a href="https://www.ukri.org/our-work/developing-people-and-skills/future-leaders-fellowships/what-are-future-leaders-fellowships/" target="_blank"> UKRI Future Leaders Fellow</a> at <br> the <a href="https://icc.dur.ac.uk/" target="_blank">Institute for Computational Cosmology</a> at <a href="https://www.durham.ac.uk/" target="_blank">Durham University</a> </h3>
-										<h1></h1>
-										<a href="#about" class="btn btn-transparent">About Me</a>
-										<a href="#contact" class="btn btn-white">Contact Me</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div><!-- /.single-slide -->
-
-				</div><!-- /.main-slider -->
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -162,11 +145,6 @@
     =============================================== -->
 
 	<section id="about">
-		<div class="svg-wave">
-			<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3600 124">
-				<path d="M3601,31.227S2736.31,201.97,1661,72.2C547.345-62.2,0,32.227,0,32.227V343H3602Z"></path>
-			</svg>
-		</div>
 		<div class="container">
 			<h2>About Me</h2>
 			<div class="about-content">
@@ -205,8 +183,8 @@
     CV
     =============================================== -->
 
-	<section id="services">
-		<div class="svg-wave">
+	<section id="cv">
+		<div class="svg-wave svg-wave-orange">
 			<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3600 124">
 				<path d="M3601,31.227S2736.31,201.97,1661,72.2C547.345-62.2,0,32.227,0,32.227V343H3602Z"></path>
 			</svg>
@@ -333,7 +311,7 @@
 
 
 
-	<section id="portfolio">
+	<section id="research">
 			<div class="svg-wave">
 				<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3600 124">
 					<path d="M3601,31.227S2736.31,201.97,1661,72.2C547.345-62.2,0,32.227,0,32.227V343H3602Z"></path>
@@ -427,8 +405,8 @@
 
 				<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".2s">
 					<div class="team-member">
-						<div class="team-img">
-							<img src="https://www.durham.ac.uk/media/durham-university/site-assets/image/Blank-profile-INK.png" class="img-fluid" alt="Dr. Shengdong Lu - Postdoctoral Researcher" loading="lazy">
+						<div class="team-img profile-placeholder">
+							<i class="fas fa-user-circle"></i>
 						</div>
 						<div class="team-caption">
 							<!-- <h4>Dr. Shengdong Lu</h4> -->
@@ -506,8 +484,8 @@
 
 				<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".6s">
 					<div class="team-member">
-						<div class="team-img">
-							<img src="https://www.durham.ac.uk/media/durham-university/site-assets/image/Blank-profile-INK.png" class="img-fluid" alt="Michael Collier - PhD Student" loading="lazy">
+						<div class="team-img profile-placeholder">
+							<i class="fas fa-user-circle"></i>
 						</div>
 						<div class="team-caption">
 							<h4><a href="https://www.durham.ac.uk/staff/michael-collier/" target="_blank">Michael Collier</a></h4>
@@ -551,10 +529,9 @@
 
 					<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".6s">
 						<div class="team-member">
-							<div class="team-img">
-								<img src="https://www.durham.ac.uk/media/durham-university/site-assets/image/Blank-profile-INK.png" class="img-fluid" alt="Yash Gondhalekar - Undergraduate Researcher" loading="lazy">
-							</div>
-							<div class="team-caption">
+													<div class="team-img profile-placeholder">
+														<i class="fas fa-user-circle"></i>
+													</div>							<div class="team-caption">
 								<h4><a href="https://in.linkedin.com/in/yash-gondhalekar-0924361b2?original_referer=https%3A%2F%2Fwww.google.co.uk%2F" target="_blank">Yash Gondhalekar</a></h4>
 								<p>Undegraduate at BITS Pilani (Goa, India); now PhD student at UCL</p>
 								<p> Research interests: Machine learning, artificial intelligence, cosmological simulations, modified gravity</p>
@@ -565,10 +542,9 @@
 
 					<div class="col-lg-3 col-md-12 wow fadeInRight" data-wow-duration=".2s" data-wow-delay=".2s">
 						<div class="team-member">
-							<div class="team-img">
-								<img src="https://www.durham.ac.uk/media/durham-university/site-assets/image/Blank-profile-INK.png" class="img-fluid" alt="Dr. Alejandra Aguirre-Santaella - Postdoctoral Researcher" loading="lazy">
-							</div>
-							<div class="team-caption">
+													<div class="team-img profile-placeholder">
+														<i class="fas fa-user-circle"></i>
+													</div>							<div class="team-caption">
 								<h4><a href="https://www.durham.ac.uk/staff/alejandra-aguirre-santaella/" target="_blank">Dr. Alejandra Aguirre-Santaella</a></h4>
 								<p>Former ICC postdoc; now a postdoc at Universitat de València.
 									</p>
@@ -586,8 +562,8 @@
 
 
 
-	<section id="testimonials">
-		<div class="svg-wave">
+	<section id="outreach">
+		<div class="svg-wave svg-wave-cyan">
 			<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3600 124">
 				<path d="M3601,31.227S2736.31,201.97,1661,72.2C547.345-62.2,0,32.227,0,32.227V343H3602Z"></path>
 			</svg>
@@ -677,11 +653,6 @@
     =============================================== -->
 
 	<section id="contact">
-		<div class="svg-wave">
-			<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3600 248">
-				<path d="M3601,31.227S2736.31,201.97,1661,72.2C547.345-62.2,0,32.227,0,32.227V343H3602Z"></path>
-			</svg>
-		</div>
 		<div class="container">
 			<h2>Contact Me</h2>
 			<div class="row">

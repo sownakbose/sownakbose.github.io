@@ -107,25 +107,7 @@ $(document).ready(function () {
 		}
 	}, true); // Use capture phase to intercept before other handlers
 
-	/*=======================================================
-			OWL CAROUSEL
-    ========================================================*/
 
-	$(".main-slider").owlCarousel({
-		items: 1,
-		nav: false,
-		autoplay: true,
-		loop: true,
-		autoplayTimeout: 8000,
-		autoplayHoverPause: true
-	});
-
-	$(".main-slider").on("translate.owl.carousel", function () {
-		$(".slider-content h3, .slider-content h1, .slider-content a").removeClass("animated fadeInUp").css("opacity", "0");
-	});
-	$(".main-slider").on("translated.owl.carousel", function () {
-		$(".slider-content h3, .slider-content h1, .slider-content a").addClass("animated fadeInUp").css("opacity", "1");
-	});
 
 	/*=======================================================
 			WOW JS

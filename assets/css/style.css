@@ -20,11 +20,11 @@
 	6/ TOP SLIDER
 	7/ ABOUT US
 	8/ FEATURES
-	9/ PORTFOLIO
+	9/ RESEARCH
 	10/ CALL TO ACTION
-	11/ SERVICES
+	11/ CV
 	12/ PRICES
-	13/ TESTIMONIALS
+	13/ OUTREACH
 	14/ TEAM
 	15/ CONTACT
 	16/ FOOTER
@@ -261,10 +261,6 @@ nav.scrolled .menu li a {
 	transition: all 0.2s ease-in-out;
 }
 
-nav.scrolled .menu li.active > a {
-	color: #ff9323;
-}
-
 nav.scrolled .menu li.active > a,
 nav.scrolled .menu li a:hover,
 nav.scrolled .menu li a:focus,
@@ -281,12 +277,13 @@ nav.scrolled .menu li a:active {
 	text-align: center;
 	position: relative;
 	background-color: #000;
-}
-
-.slider-area .single-slide {
+    background-image: url(../../images/2019-L0_slice_binary-NoAnnotation-cropped-transp.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+.slider-area .single-slide {
 	max-height: 100vh;
 	height: 100vh;
 }
@@ -303,20 +300,6 @@ nav.scrolled .menu li a:active {
 	top: 0;
 	bottom: 0;
 	/* background: rgba(173, 103, 234, 0.66); */
-}
-
-.slider-area .slide-bg-1 {
-	background-image: url(../../images/2019-L0_slice_binary-NoAnnotation-cropped-transp.png);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-}
-
-.slider-area .slide-bg-2 {
-	background-image: url(../../images/2019-L0_slice_binary-NoAnnotation-cropped-transp.png);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
 }
 
 .slider-area .tabel {
@@ -443,6 +426,7 @@ nav.scrolled .menu li a:active {
 #about .about-text {
 	text-align: left;
 	line-height: 1.8;
+	color: #fff;
 }
 
 #about .about-text p {
@@ -463,9 +447,9 @@ nav.scrolled .menu li a:active {
 }
 
 /*=======================================================
-			PORTFOLIO:
+			RESEARCH:
 ========================================================*/
-#portfolio {
+#research {
 	background: #000;
 	padding: 40px 0 0 0;
 	text-align: center;
@@ -488,7 +472,15 @@ nav.scrolled .menu li a:active {
 	fill: #000;
 }
 
-#portfolio h2:after {
+.svg-wave.svg-wave-orange svg path {
+	fill: #ff9323;
+}
+
+.svg-wave.svg-wave-cyan svg path {
+	fill: #8aecec;
+}
+
+#research h2:after {
 	top: -23px;
 	content: "";
 	position: relative;
@@ -503,30 +495,30 @@ nav.scrolled .menu li a:active {
 	border-radius: 100px;
 }
 
-#portfolio .row {
+#research .row {
 	margin-top: 80px;
 }
 
-#portfolio .portfolio-item {
+#research .portfolio-item {
 	position: relative;
 	padding: 0;
 	margin-bottom: 30px;
 }
 
-#portfolio .portfolio-item .item-img {
+#research .portfolio-item .item-img {
 	width: auto;
 	height: auto;
 	overflow: hidden;
 	border-radius: 8px;
 }
 
-#portfolio .portfolio-item .item-img img {
+#research .portfolio-item .item-img img {
 	width: 100%;
 	height: 250px;
 	object-fit: cover;
 }
 
-#portfolio .portfolio-item .item-info {
+#research .portfolio-item .item-info {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -553,7 +545,7 @@ nav.scrolled .menu li a:active {
 	transition: all .3s ease-in-out;
 }
 
-#portfolio .portfolio-item .item-info .heading-3 {
+#research .portfolio-item .item-info .heading-3 {
 	font-size: 18px;
 	font-weight: 700;
 	color: #fff;
@@ -565,7 +557,7 @@ nav.scrolled .menu li a:active {
 	opacity: 0;
 }
 
-#portfolio .portfolio-item .item-info .p-text {
+#research .portfolio-item .item-info .p-text {
 	font-size: 14px;
 	max-width: 90%;
 	width: 100%;
@@ -580,7 +572,7 @@ nav.scrolled .menu li a:active {
 	opacity: 0;
 }
 
-#portfolio .portfolio-item .item-info .link-text {
+#research .portfolio-item .item-info .link-text {
 	font-size: 12px;
 	color: #fff;
 	position: relative;
@@ -593,7 +585,7 @@ nav.scrolled .menu li a:active {
 	opacity: 0;
 }
 
-#portfolio .portfolio-item .item-info .link-text:before {
+#research .portfolio-item .item-info .link-text:before {
 	content: "";
 	width: 50px;
 	height: 2px;
@@ -605,23 +597,23 @@ nav.scrolled .menu li a:active {
 	left: 5px;
 }
 
-#portfolio .portfolio-item:hover .item-info {
+#research .portfolio-item:hover .item-info {
 	opacity: 1;
 }
 
-#portfolio .portfolio-item:hover .item-info .heading-3 {
-	opacity: 1;
-	-webkit-transform: translate(0, 0);
-	transform: translate(0, 0);
-}
-
-#portfolio .portfolio-item:hover .item-info .p-text {
+#research .portfolio-item:hover .item-info .heading-3 {
 	opacity: 1;
 	-webkit-transform: translate(0, 0);
 	transform: translate(0, 0);
 }
 
-#portfolio .portfolio-item:hover .item-info .link-text {
+#research .portfolio-item:hover .item-info .p-text {
+	opacity: 1;
+	-webkit-transform: translate(0, 0);
+	transform: translate(0, 0);
+}
+
+#research .portfolio-item:hover .item-info .link-text {
 	opacity: 1;
 	-webkit-transform: translate(0, 0);
 	transform: translate(0, 0);
@@ -659,13 +651,13 @@ nav.scrolled .menu li a:active {
 }
 
 /*=======================================================
-			OUR SERVICES:
+			OUR CV:
 ========================================================*/
-#services {
+#cv {
 	padding: 120px 0;
 }
 
-#services h2 {
+#cv h2 {
 	text-align: center;
 	margin-bottom: 60px;
 }
@@ -854,7 +846,7 @@ nav.scrolled .menu li a:active {
 }
 }
 
-#services h2:after {
+#cv h2:after {
 	top: -23px;
 	content: "";
 	position: relative;
@@ -869,34 +861,34 @@ nav.scrolled .menu li a:active {
 	border-radius: 100px;
 }
 
-#services .service {
+#cv .service {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	margin-bottom: 30px;
 }
 
-#services .service .service-icon {
+#cv .service .service-icon {
 	margin-right: 20px;
 }
 
-#services .bottom-caption {
+#cv .bottom-caption {
 	margin-top: 80px;
 }
 
 /*=======================================================
-			TESTIMONIALS:
+			OUTREACH:
 ========================================================*/
-#testimonials {
+#outreach {
 	padding: 60px 0;
 	text-align: center;
 }
 
-#testimonials h2 {
+#outreach h2 {
 	margin-bottom: 80px;
 }
 
-#testimonials h2:after {
+#outreach h2:after {
 	top: -23px;
 	content: "";
 	position: relative;
@@ -958,6 +950,22 @@ nav.scrolled .menu li a:active {
 	margin: 0 auto;
 	border: 3px solid #ad67ea;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* New styles for profile placeholder */
+#team .team-member .profile-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: rgba(173, 103, 234, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem; /* Adjust icon size */
+    color: #ad67ea;
+    border: 3px solid #ad67ea;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 #team .team-member h4 {
@@ -1156,7 +1164,7 @@ footer a:active {
 		padding: 60px 0 0 0;
 	}
 
-	#services {
+	#cv {
 		padding: 60px 0;
 	}
 
@@ -1165,24 +1173,24 @@ footer a:active {
 	}
 
 	/* Show research card overlays on mobile (no hover) */
-	#portfolio .portfolio-item .item-info {
+	#research .portfolio-item .item-info {
 		opacity: 1;
 		position: relative;
 		border-radius: 0 0 8px 8px;
-		background: rgba(173, 103, 234, 0.9);
+		background: rgba(173, 103, 234, 0.7); /* Changed opacity here */
 		justify-content: flex-start;
 		padding: 15px;
 	}
 
-	#portfolio .portfolio-item .item-info .heading-3,
-	#portfolio .portfolio-item .item-info .p-text,
-	#portfolio .portfolio-item .item-info .link-text {
+	#research .portfolio-item .item-info .heading-3,
+	#research .portfolio-item .item-info .p-text,
+	#research .portfolio-item .item-info .link-text {
 		opacity: 1;
 		-webkit-transform: translate(0, 0);
 		transform: translate(0, 0);
 	}
 
-	#portfolio .portfolio-item .item-img {
+	#research .portfolio-item .item-img {
 		border-radius: 8px 8px 0 0;
 	}
 
@@ -1205,6 +1213,13 @@ footer a:active {
 		width: 60px;
 		height: 60px;
 	}
+
+    /* Style for profile-placeholder inside team-img on mobile */
+    #team .team-member .profile-placeholder {
+        width: 60px;
+        height: 60px;
+        font-size: 2.5rem;
+    }
 
 	#team .team-member h4 {
 		margin-top: 0;
@@ -1249,7 +1264,7 @@ footer a:active {
 		box-shadow: none;
 	}
 
-	#services .cv-embed object {
+	#cv .cv-embed object {
 		width: 100%;
 		height: 400px;
 	}
