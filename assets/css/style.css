@@ -1185,7 +1185,21 @@ nav.scrolled .menu li a:active {
 
 #team .join-group p {
 	color: #e6e6e6;
-	margin-bottom: 22px;
+	margin-bottom: 0;
+}
+
+#team .join-group .join-item {
+	margin-top: 22px;
+}
+
+#team .join-group .join-item h4 {
+	font-family: 'Nunito', sans-serif;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	color: #8aecec;
+	margin-bottom: 7px;
 }
 
 #team .join-group a:not(.btn) {
