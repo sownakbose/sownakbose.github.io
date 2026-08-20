@@ -1064,6 +1064,64 @@ nav.scrolled {
 		}
 	}
 
+	.team-member .profile-placeholder .profile-initials {
+		font-family: 'Sansita', sans-serif;
+		font-size: 2.9rem;
+		font-weight: 700;
+		line-height: 1;
+		letter-spacing: 0.06em;
+		text-indent: 0.06em; // offset letter-spacing so initials sit centred
+		color: #ad67ea;
+
+		@media (max-width: 767px) {
+			font-size: 1.25rem;
+		}
+	}
+
+	.join-group {
+		max-width: 820px;
+		margin: 70px auto 0;
+		padding: 32px 36px;
+		background: rgba(26, 26, 26, 0.6);
+		border-radius: 12px;
+		border-left: 4px solid $secondary-color;
+		text-align: left;
+
+		@media (max-width: 767px) {
+			margin-top: 50px;
+			padding: 24px 22px;
+		}
+
+		h3 {
+			font-size: 1.3rem;
+			font-weight: 700;
+			color: $primary-color;
+			margin-bottom: 16px;
+			display: flex;
+			align-items: center;
+			gap: 12px;
+
+			i {
+				color: $secondary-color;
+				font-size: 1.05rem;
+			}
+		}
+
+		p {
+			color: #e6e6e6;
+			margin-bottom: 22px;
+		}
+
+		a:not(.btn) {
+			color: $primary-color;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
 	.social-media {
 		list-style: none;
 		padding: 0;

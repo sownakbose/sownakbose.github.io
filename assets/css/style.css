@@ -1154,6 +1154,59 @@ nav.scrolled .menu li a:active {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+#team .join-group {
+	max-width: 820px;
+	margin: 70px auto 0;
+	padding: 32px 36px;
+	background: rgba(26, 26, 26, 0.6);
+	border-radius: 12px;
+	border-left: 4px solid #8aecec;
+	text-align: left;
+}
+
+#team .join-group h3 {
+	font-size: 1.3rem;
+	font-weight: 700;
+	color: #ff9323;
+	margin-bottom: 16px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	gap: 12px;
+}
+
+#team .join-group h3 i {
+	color: #8aecec;
+	font-size: 1.05rem;
+}
+
+#team .join-group p {
+	color: #e6e6e6;
+	margin-bottom: 22px;
+}
+
+#team .join-group a:not(.btn) {
+	color: #ff9323;
+	text-decoration: none;
+}
+
+#team .join-group a:not(.btn):hover {
+	text-decoration: underline;
+}
+
+#team .team-member .profile-placeholder .profile-initials {
+	font-family: 'Sansita', sans-serif;
+	font-size: 2.9rem;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: 0.06em;
+	text-indent: 0.06em; /* offset letter-spacing so initials sit centred */
+	color: #ad67ea;
+}
+
 #team .team-member h4 {
 	margin-top: 25px;
 }
@@ -1405,6 +1458,16 @@ footer a:active {
         width: 60px;
         height: 60px;
         font-size: 2.5rem;
+        border-width: 2px;
+    }
+
+    #team .team-member .profile-placeholder .profile-initials {
+        font-size: 1.25rem;
+    }
+
+    #team .join-group {
+        margin-top: 50px;
+        padding: 24px 22px;
     }
 
 	#team .team-member h4 {
