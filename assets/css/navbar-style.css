@@ -192,6 +192,19 @@ nav .wrap-core-nav-list .menu li:hover a::after {
     width: calc(100% - 50px);
 }
 
+/* Tighten nav spacing on small desktops so all items fit on one row */
+@media (min-width: 993px) and (max-width: 1199px) {
+    nav .wrap-core-nav-list .menu li a {
+        padding: 20px 12px;
+        font-size: 13px;
+    }
+
+    nav .wrap-core-nav-list .menu li.active a::after,
+    nav .wrap-core-nav-list .menu li:hover a::after {
+        width: calc(100% - 24px);
+    }
+}
+
 /* Mobile navigation styles */
 @media (max-width: 992px) {
     nav .full-container,

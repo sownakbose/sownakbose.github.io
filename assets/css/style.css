@@ -277,7 +277,7 @@ nav.scrolled .menu li a:active {
 	text-align: center;
 	position: relative;
 	background-color: #000;
-    background-image: url(../../images/2019-L0_slice_binary-NoAnnotation-cropped-transp.png);
+    background-image: url(../../images/2019-L0_slice_binary-NoAnnotation-cropped-transp.webp);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -623,7 +623,7 @@ nav.scrolled .menu li a:active {
 			CALL TO ACTION:
 ========================================================*/
 #call-to-action {
-	background: url(../../images/2019-L0_slice_binary-NoAnnotation-cropped-transp.png);
+	background: url(../../images/2019-L0_slice_binary-NoAnnotation-cropped-transp.webp);
 	background-position: center;
 	background-size: cover;
 	background-attachment: fixed;
@@ -874,6 +874,192 @@ nav.scrolled .menu li a:active {
 
 #cv .bottom-caption {
 	margin-top: 80px;
+}
+
+/*=======================================================
+			PUBLICATIONS:
+========================================================*/
+#publications {
+	padding: 60px 0 100px;
+}
+
+#publications h2 {
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+#publications h2:after {
+	top: -23px;
+	content: "";
+	position: relative;
+	left: 50%;
+	bottom: 0;
+	width: 300px;
+	height: 4px;
+	display: block;
+	background-color: #ad67ea;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	border-radius: 100px;
+}
+
+#publications .pub-intro {
+	max-width: 800px;
+	margin: 0 auto 50px;
+	text-align: center;
+	color: #e6e6e6;
+}
+
+#publications .pub-intro a {
+	color: #ff9323;
+	text-decoration: none;
+}
+
+#publications .pub-intro a:hover {
+	text-decoration: underline;
+}
+
+.pub-columns {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px;
+	max-width: 1200px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.pub-col-head {
+	font-size: 1.15rem;
+	font-weight: 700;
+	color: #ff9323;
+	letter-spacing: 0.05em;
+	margin-bottom: 20px;
+	padding-bottom: 12px;
+	border-bottom: 2px solid rgba(173, 103, 234, 0.5);
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.pub-col-head i {
+	color: #ad67ea;
+	font-size: 0.95rem;
+}
+
+.pub-entry {
+	background: rgba(26, 26, 26, 0.6);
+	padding: 16px 20px;
+	border-radius: 10px;
+	border-left: 3px solid #ad67ea;
+	margin-bottom: 14px;
+}
+
+.pub-entry-award {
+	border-left-color: #ff9323;
+}
+
+.pub-badge {
+	display: inline-block;
+	background: rgba(255, 147, 35, 0.15);
+	color: #ff9323;
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	padding: 2px 11px;
+	border-radius: 100px;
+	margin-bottom: 9px;
+}
+
+.pub-badge i {
+	margin-right: 5px;
+}
+
+.pub-entry-title,
+.pub-entry-title:link,
+.pub-entry-title:visited {
+	display: block;
+	font-size: 0.95rem;
+	font-weight: 600;
+	line-height: 1.45;
+	color: #fff;
+	text-decoration: none;
+	margin-bottom: 6px;
+	-webkit-transition: color 0.2s ease;
+	transition: color 0.2s ease;
+}
+
+.pub-entry-title:hover,
+.pub-entry-title:focus {
+	color: #ff9323;
+	text-decoration: none;
+}
+
+.pub-authors {
+	color: #b9b9b9;
+	font-size: 0.85rem;
+	line-height: 1.5;
+	margin-bottom: 5px;
+}
+
+.pub-authors b {
+	color: #e6e6e6;
+}
+
+.pub-venue {
+	color: #8a8a8a;
+	font-size: 0.8rem;
+	margin-bottom: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.pub-links {
+	display: inline-block;
+	margin-left: auto;
+}
+
+.pub-links a {
+	display: inline-block;
+	color: #8aecec;
+	font-size: 0.75rem;
+	font-weight: 600;
+	border: 1px solid rgba(138, 236, 236, 0.4);
+	border-radius: 100px;
+	padding: 1px 11px;
+	margin-left: 6px;
+	text-decoration: none;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
+.pub-links a:hover {
+	background: #8aecec;
+	color: #000;
+	text-decoration: none;
+}
+
+.pub-more {
+	text-align: center;
+	margin-top: 50px;
+}
+
+@media (max-width: 991px) {
+	.pub-columns {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
 }
 
 /*=======================================================
