@@ -1254,31 +1254,60 @@ nav.scrolled {
 
 	}
 
-	textarea {
-		border-radius: 5px;
+	.form-control {
+		border-radius: 100px;
 		border: 1.5px solid $primary-color;
+		background: rgba(255, 255, 255, 0.05);
+		color: $white;
+
+		&:focus {
+			outline: 0;
+			box-shadow: none;
+			border: 1.5px solid $secondary-color;
+			background: rgba(255, 255, 255, 0.08);
+		}
+
+		&::placeholder {
+			color: #8a8a8a;
+		}
 	}
 
-	textarea:focus {
-		outline: 0;
-		box-shadow: none;
-		border: 1.5px solid $secondary-color;
+	textarea.form-control {
+		border-radius: 8px;
 	}
 
-	.row {
-		.col {
-			.form-control {
-				border-radius: 100px;
-				margin-bottom: 20px;
-				border: 1.5px solid $primary-color;
-			}
+	.contact-form {
+		.form-group {
+			margin-bottom: 20px;
+		}
 
-			.form-control:focus {
-				outline: 0;
-				box-shadow: none;
-				border: 1.5px solid $secondary-color;
+		label {
+			display: block;
+			font-family: 'Nunito', sans-serif;
+			font-size: 0.78rem;
+			font-weight: 700;
+			letter-spacing: 0.09em;
+			text-transform: uppercase;
+			color: #b9b9b9;
+			margin-bottom: 7px;
+			padding-left: 4px;
+
+			.label-optional {
+				font-weight: 400;
+				text-transform: none;
+				letter-spacing: 0.02em;
+				color: #8a8a8a;
 			}
 		}
+	}
+
+	// Honeypot spam trap - must stay reachable to bots but hidden from people
+	.form-hp {
+		position: absolute;
+		left: -9999px;
+		width: 1px;
+		height: 1px;
+		opacity: 0;
 	}
 
 }

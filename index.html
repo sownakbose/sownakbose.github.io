@@ -845,19 +845,31 @@
 				</div>
 				<div class="col-lg-8 wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".6s">
 					<h4>... or, alternatively, use this form to reach out to me:</h4>
-					<form method="post" action="https://formspree.io/f/mayazbrl">
+					<form method="post" action="https://formspree.io/f/mayazbrl" class="contact-form">
 						<div class="row">
-							<div class="col">
-								<input type="email" class="form-control" placeholder="email:" name="_replyto">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="form-name">Name</label>
+									<input type="text" id="form-name" name="name" class="form-control" autocomplete="name" required>
+								</div>
 							</div>
-							<div class="col">
-								<input type="text" class="form-control" placeholder="subject:" name="subject">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="form-email">Email</label>
+									<input type="email" id="form-email" name="_replyto" class="form-control" autocomplete="email" required>
+								</div>
 							</div>
 						</div>
-						<!-- Form Group -->
-						<div class="form-group wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".6s">
-							<textarea id="form-message" cols="30" rows="5" class="form-control" name="message" placeholder="Message:" required></textarea>
+						<div class="form-group">
+							<label for="form-subject">Subject <span class="label-optional">(optional)</span></label>
+							<input type="text" id="form-subject" name="subject" class="form-control">
 						</div>
+						<div class="form-group">
+							<label for="form-message">Message</label>
+							<textarea id="form-message" name="message" rows="5" class="form-control" required></textarea>
+						</div>
+						<!-- Honeypot: hidden from people, filled in by bots -->
+						<input type="text" name="_gotcha" class="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 						<button type="submit" class="btn btn-primary">Send a Message</button>
 					</form>
 				</div>

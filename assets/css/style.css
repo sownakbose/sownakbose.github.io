@@ -1335,35 +1335,60 @@ nav.scrolled .menu li a:active {
 	color: #ad67ea;
 }
 
-#contact textarea {
-	border-radius: 8px;
-	border: 1.5px solid #ad67ea;
-	background: rgba(255, 255, 255, 0.05);
-	color: #fff;
-}
-
-#contact textarea:focus {
-	outline: 0;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	border: 1.5px solid #8aecec;
-	background: rgba(255, 255, 255, 0.08);
-}
-
-#contact .row .col .form-control {
+#contact .form-control {
 	border-radius: 100px;
-	margin-bottom: 20px;
 	border: 1.5px solid #ad67ea;
 	background: rgba(255, 255, 255, 0.05);
 	color: #fff;
 }
 
-#contact .row .col .form-control:focus {
+#contact textarea.form-control {
+	border-radius: 8px;
+}
+
+#contact .form-control:focus {
 	outline: 0;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	border: 1.5px solid #8aecec;
 	background: rgba(255, 255, 255, 0.08);
+}
+
+#contact .form-control::-webkit-input-placeholder { color: #8a8a8a; }
+#contact .form-control::-moz-placeholder { color: #8a8a8a; }
+#contact .form-control:-ms-input-placeholder { color: #8a8a8a; }
+#contact .form-control::placeholder { color: #8a8a8a; }
+
+#contact .contact-form .form-group {
+	margin-bottom: 20px;
+}
+
+#contact .contact-form label {
+	display: block;
+	font-family: 'Nunito', sans-serif;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	color: #b9b9b9;
+	margin-bottom: 7px;
+	padding-left: 4px;
+}
+
+#contact .contact-form label .label-optional {
+	font-weight: 400;
+	text-transform: none;
+	letter-spacing: 0.02em;
+	color: #8a8a8a;
+}
+
+/* Honeypot spam trap - must stay reachable to bots but hidden from people */
+#contact .form-hp {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
 }
 
 /*=======================================================
